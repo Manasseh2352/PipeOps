@@ -21,7 +21,7 @@ func main() {
 		ServerAddress string
 	}{
 		DBDriver:      "postgres",
-		DBSource:      "postgres://root:secret@localhost:5432/skudoosh?sslmode=disable",
+		DBSource:      "postgres://root:secret@postgres12:5432/skudoosh?sslmode=disable",
 		ServerAddress: ":8080",
 	}
 	dbConn, err := sql.Open(config.DBDriver, config.DBSource)
