@@ -1,3 +1,3 @@
-module github.com/ekefan/PipeOps/backend
+module github.com/Manasseh2352/PipeOps/backend
 
 go 1.22.4
