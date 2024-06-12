@@ -14,7 +14,7 @@ import (
 func main() {
 	fmt.Println("start")
 	
-	config, err :=  utils.LoadConfig("./../../.")
+	config, err :=  utils.LoadConfig(".")
 	fmt.Printf("printing it %s", config.ServerAddress)
 	if err != nil {
 		log.Fatal("cannot load config: ", err)

@@ -1,11 +1,11 @@
-name: myapp
+name: skudoosh
 services:
   postgres:
     image: postgres:12-alpine
     environment:
      - POSTGRES_USER=root
      - POSTGRES_PASSWORD=secret
-     - POSRGRES_DB=skudoosh
+     - POSTGRES_DB=skudooshdb
   api:
     build:
       context: .
@@ -13,4 +13,8 @@ services:
     ports:
      - "8080:8080"
     environment:
-     - DB_SOURCE=postgresql://root:secret@postgres:5432/skudoosh?sslmode=disable
+     - DB_SOURCE=postgresql://root:secret@postgres:5432/skudooshdb?sslmode=disable
+    depends_on:
+     - postgres
+    entrypoint: [ "/app/wait-for.sh", "postgres:5432", "--", "/app/start.sh" ]
+    command: [ "/app/main" ]
