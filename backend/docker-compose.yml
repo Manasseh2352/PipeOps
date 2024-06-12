@@ -1,0 +1,16 @@
+name: myapp
+services:
+  postgres:
+    image: postgres:12-alpine
+    environment:
+     - POSTGRES_USER=root
+     - POSTGRES_PASSWORD=secret
+     - POSRGRES_DB=skudoosh
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+     - "8080:8080"
+    environment:
+     - DB_SOURCE=postgresql://root:secret@postgres:5432/skudoosh?sslmode=disable

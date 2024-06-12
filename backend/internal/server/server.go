@@ -1,8 +1,9 @@
 package server
 
 import (
-	"github.com/gin-gonic/gin"
+
 	db "github.com/Manasseh2352/PipeOps/backend/internal/db/sqlc"
+	"github.com/gin-gonic/gin"
 )
 
 
