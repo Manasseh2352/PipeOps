@@ -62,12 +62,12 @@ func (q *Queries) DeleteUser(ctx context.Context) error {
 
 const getUser = `-- name: GetUser :one
 SELECT id, fullname, username, email, hashed_password, phone_number, trip_state, created_at FROM users 
-WHERE id = $1
+WHERE username = $1
 LIMIT 1
 `
 
-func (q *Queries) GetUser(ctx context.Context, id int64) (User, error) {
-	row := q.queryRow(ctx, q.getUserStmt, getUser, id)
+func (q *Queries) GetUser(ctx context.Context, username string) (User, error) {
+	row := q.queryRow(ctx, q.getUserStmt, getUser, username)
 	var i User
 	err := row.Scan(
 		&i.ID,
@@ -84,13 +84,13 @@ func (q *Queries) GetUser(ctx context.Context, id int64) (User, error) {
 
 const getUserForUpdate = `-- name: GetUserForUpdate :one
 SELECT id, fullname, username, email, hashed_password, phone_number, trip_state, created_at FROM users
-WHERE id = $1
+WHERE username = $1
 LIMIT 1
 FOR NO KEY UPDATE
 `
 
-func (q *Queries) GetUserForUpdate(ctx context.Context, id int64) (User, error) {
-	row := q.queryRow(ctx, q.getUserForUpdateStmt, getUserForUpdate, id)
+func (q *Queries) GetUserForUpdate(ctx context.Context, username string) (User, error) {
+	row := q.queryRow(ctx, q.getUserForUpdateStmt, getUserForUpdate, username)
 	var i User
 	err := row.Scan(
 		&i.ID,
