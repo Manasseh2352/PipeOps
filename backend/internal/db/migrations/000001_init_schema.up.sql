@@ -5,7 +5,7 @@ CREATE TABLE "users" (
   "email" varchar UNIQUE NOT NULL,
   "hashed_password" varchar NOT NULL,
   "phone_number" varchar NOT NULL,
-  "trip_state" boolean NOT NULL,
+  "trip_state" boolean NOT NULL DEFAULT false,
   "created_at" timestamptz NOT NULL DEFAULT (now())
 );
 
@@ -61,7 +61,7 @@ CREATE INDEX ON "itineraries" ("owner");
 
 CREATE INDEX ON "activity_lists" ("trip_owner");
 
-CREATE INDEX ON "travel_check_lists" ("trip_owner");
+CREATE INDEX ON "travel_checklists" ("trip_owner");
 
 CREATE INDEX ON "trip_bookings" ("trip_owner");
 
@@ -73,7 +73,7 @@ ALTER TABLE "itineraries" ADD FOREIGN KEY ("owner") REFERENCES "users" ("id");
 
 ALTER TABLE "activity_lists" ADD FOREIGN KEY ("trip_owner") REFERENCES "itineraries" ("id");
 
-ALTER TABLE "travel_check_lists" ADD FOREIGN KEY ("trip_owner") REFERENCES "itineraries" ("id");
+ALTER TABLE "travel_checklists" ADD FOREIGN KEY ("trip_owner") REFERENCES "itineraries" ("id");
 
 ALTER TABLE "trip_bookings" ADD FOREIGN KEY ("trip_owner") REFERENCES "itineraries" ("id");
 

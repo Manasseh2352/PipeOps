@@ -11,16 +11,16 @@ makeSchema:
 	migrate create -ext sql -dir ./db/migrations -seq init
 
 migrateup:
-	migrate -path ./db/migrations -database "postgresql://root:secret@localhost:5432/skudoosh?sslmode=disable" -verbose up
+	migrate -path ./internal/db/migrations -database "postgresql://root:secret@localhost:5432/skudoosh?sslmode=disable" -verbose up
 
 migratedown:
-	migrate -path ./db/migrations -database "postgresql://root:secret@localhost:5432/skudoosh?sslmode=disable" -verbose down
+	migrate -path ./internal/db/migrations -database "postgresql://root:secret@localhost:5432/skudoosh?sslmode=disable" -verbose down
 
 sqlc:
 	sqlc generate
 
 force:
-	migrate -path ./db/migrations -database "postgresql://root:secret@localhost:5432/skudoosh?sslmode=disable" force 1
+	migrate -path ./internal/db/migrations -database "postgresql://root:secret@localhost:5432/skudoosh?sslmode=disable" force 1
 
 .PHONY: postgresContainer createdb dropdb migrateup migratedown sqlc force  makeSchema
  
