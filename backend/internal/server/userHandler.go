@@ -14,13 +14,9 @@ import (
 	"github.com/lib/pq"
 )
 
-type ErrorResp struct {
-	err string
-}
-
-func errorResponse(err error) ErrorResp {
-	return ErrorResp{
-		err: err.Error(),
+func errorResponse(err error) gin.H {
+	return gin.H{
+		"error": err.Error(),
 	}
 }
 
