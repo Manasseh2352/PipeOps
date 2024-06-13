@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <div className='Nav'>
             <nav>
-                <h1>Logo</h1>
+                <img src="./Assets/pix/submark-black.png" alt="" />
 
                 <ul>
                     <li>Sign in</li>
