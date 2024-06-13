@@ -1,7 +1,7 @@
-[project]
-id = "my-go-app"
-name = "My Go App"
-version = "0.1.0"
+# project.toml
+[ _ ]
+schema-version = "0.2"
 
-[[build.requires]]
-uri = "urn:cnb:builder:paketo-buildpacks/go"
+[[ io.buildpacks.build.env ]]
+  name="BP_GO_TARGETS"
+  value="./cmd/api/"
