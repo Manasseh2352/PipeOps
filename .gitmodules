@@ -1,0 +1,3 @@
+[submodule "backend/samples"]
+	path = backend/samples
+	url = https://github.com/paketo-buildpacks/samples
