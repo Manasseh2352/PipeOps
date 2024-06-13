@@ -1,7 +1,12 @@
 .Nav{
-    /* background-color: red; */
+    background: #fff;
     width: 100%;
     font-weight: 900;
+    z-index: 99;
+
+    img{
+        width: 5%;
+    }
 
     nav{
         display: flex;

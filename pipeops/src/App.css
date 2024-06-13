@@ -6,7 +6,9 @@
   font-family: "Shippori Mincho B1", serif;
   list-style: none;
 }
-.landing {
-  font-weight: 800;
-  font-style: normal;
+html{
+    overflow-x: hidden;
+    scroll-padding-top: 5.5rem;
+    scroll-behavior: smooth;
 }
+
